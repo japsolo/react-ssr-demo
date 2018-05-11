@@ -1,13 +1,17 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 import { configureStore } from './store'
 import App from './components/App'
 
-const store = configureStore()
+const preloadedState = window.__PRELOADED_STATE__
 
-render(
+delete window.__PRELOADED_STATE__
+
+const store = configureStore(preloadedState)
+
+hydrate(
   <Provider store={store}>
     <BrowserRouter>
       <App />

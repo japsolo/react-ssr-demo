@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
+import movies from '../../public/movies.json'
+
 const moviesInitialState = {
-  items: [],
+  items: movies,
   isLoading: false,
   error: null
 }

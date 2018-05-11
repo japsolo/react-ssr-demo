@@ -583,3 +583,168 @@ Probar
 ```
 npm start
 ```
+
+## Agregar Server-Side Rendering
+
+Instalar Express
+
+```
+npm i --save express
+```
+
+Instalar Babel Cli y Nodemon
+
+```
+npm i --save-dev babel-cli nodemon
+```
+
+Crear el archivo `src/server.js`
+
+```
+import express from 'express'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { configureStore } from './store'
+import App from './components/App'
+
+const app = express()
+const port = process.env.PORT || 3000
+
+app.use('/', express.static('build'))
+
+app.use(handleRender)
+
+function handleRender (req, res) {
+  const store = configureStore()
+  const context = {}
+
+  const html = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <App />
+      </StaticRouter>
+    </Provider>
+  )
+
+  const preloadedState = store.getState()
+
+  res.send(renderFullPage(html, preloadedState))
+}
+
+function renderFullPage (html, preloadedState) {
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>React App</title>
+      </head>
+      <body>
+        <div id="root">${html}</div>
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+        </script>
+        <script src="/client-bundle.js"></script>
+      </body>
+    </html>
+  `
+}
+
+const server = app.listen(port, err => {
+  if (err) {
+    return console.error(err)
+  }
+  console.log(`Listening at port ${server.address().port}`)
+})
+```
+
+Actualizar el punto de entrada para usar `hydrate` en lugar de `render`
+
+```
+cat << __EOF__ > src/client.js
+import React from 'react'
+import { hydrate } from 'react-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { configureStore } from './store'
+import App from './components/App'
+
+const preloadedState = window.__PRELOADED_STATE__
+
+delete window.__PRELOADED_STATE__
+
+const store = configureStore(preloadedState)
+
+hydrate(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
+)
+__EOF__
+```
+
+Actualizar el `reducer` para tomar el estado inicial desde el servidor
+
+```
+cat << __EOF__ > src/reducers/index.js
+import { combineReducers } from 'redux'
+
+import movies from '../../public/movies.json'
+
+const moviesInitialState = {
+  items: movies,
+  isLoading: false,
+  error: null
+}
+
+const moviesReducer = (state = moviesInitialState, action) => {
+  switch (action.type) {
+    case 'FETCH_MOVIES_REQUST':
+      return {
+        ...state,
+        isLoading: true
+      }
+    case 'FETCH_MOVIES_SUCCESS':
+      return {
+        ...state,
+        items: action.movies,
+        isLoading: false
+      }
+    case 'FETCH_MOVIES_FAILURE':
+      return {
+        ...state,
+        error: action.error,
+        isLoading: false
+      }
+    default:
+      return state
+  }
+}
+
+export default combineReducers({
+  movies: moviesReducer
+})
+__EOF__
+```
+
+Por comodidad modificar los `scripts` de incialización
+
+```json
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack-cli",
+    "server": "nodemon ./src/server.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+
+Probar
+
+```
+npm run build
+npm run server
+```
