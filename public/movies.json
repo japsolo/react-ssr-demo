@@ -1,0 +1,74 @@
+[
+  {
+    "id": "tt2380307",
+    "title": "Coco",
+    "year": 2017,
+    "summary": "Aspiring musician Miguel, confronted with his family's ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer.",
+    "url": "https://www.imdb.com/title/tt2380307",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_UY268_CR3,0,182,268_AL_.jpg",
+    "rating": 8.5
+  },
+  {
+    "id": "tt0910970",
+    "title": "WALL·E",
+    "year": 2008,
+    "summary": "In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
+    "url": "https://www.imdb.com/title/tt0910970",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 8.4
+  },
+  {
+    "id": "tt0114709",
+    "title": "Toy Story",
+    "year": 1995,
+    "summary": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+    "url": "https://www.imdb.com/title/tt0114709",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 8.3
+  },
+  {
+    "id": "tt1049413",
+    "title": "Up",
+    "year": 2009,
+    "summary": "Seventy-eight year old Carl Fredricksen travels to Paradise Falls in his home equipped with balloons, inadvertently taking a young stowaway.",
+    "url": "https://www.imdb.com/title/tt1049413",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 8.3
+  },
+  {
+    "id": "tt0266543",
+    "title": "Finding Nemo",
+    "year": 2003,
+    "summary": "After his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home.",
+    "url": "https://www.imdb.com/title/tt0266543",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BZjMxYzBiNjUtZDliNC00MDAyLTg3N2QtOWNjNmNhZGQzNDg5XkEyXkFqcGdeQXVyNjE2MjQwNjc@._V1_UY268_CR1,0,182,268_AL_.jpg",
+    "rating": 8.1
+  },
+  {
+    "id": "tt0198781",
+    "title": "Monsters, Inc.",
+    "year": 2001,
+    "summary": "In order to power the city, monsters have to scare children so that they scream. However, the children are toxic to the monsters, and after a child gets through, 2 monsters realize things may not be what they think.",
+    "url": "https://www.imdb.com/title/tt0198781",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BMTY1NTI0ODUyOF5BMl5BanBnXkFtZTgwNTEyNjQ0MDE@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 8.1
+  },
+  {
+    "id": "tt0317705",
+    "title": "The Incredibles",
+    "year": 2004,
+    "summary": "A family of undercover superheroes, while trying to live the quiet suburban life, are forced into action to save the world.",
+    "url": "https://www.imdb.com/title/tt0317705",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BMTY5OTU0OTc2NV5BMl5BanBnXkFtZTcwMzU4MDcyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 8
+  },
+  {
+    "id": "tt0382932",
+    "title": "Ratatouille",
+    "year": 2007,
+    "summary": "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous restaurant.",
+    "url": "https://www.imdb.com/title/tt0382932",
+    "poster_url": "https://ia.media-imdb.com/images/M/MV5BMTMzODU0NTkxMF5BMl5BanBnXkFtZTcwMjQ4MzMzMw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 8
+  }
+]

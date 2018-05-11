@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var config = {
   mode: 'development',
@@ -16,6 +17,9 @@ var config = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: 'public' }
+    ]),
     new HtmlWebpackPlugin({
       template: 'public/index.html'
     })
