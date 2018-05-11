@@ -157,3 +157,114 @@ Para comodidad, cambiar los scripts del `package.json`
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 ```
+
+## Agregar React Router
+
+Instalar React Router
+
+```
+npm install react-router-dom --save
+```
+
+Crear directorio para las páginas
+
+```
+mkdir -p src/pages
+```
+
+Crear la página de inicio
+
+```
+cat << __EOF__ > src/pages/HomePage.js
+import React from 'react'
+
+const HomePage = () =>
+  <div>
+    <h1>Home</h1>
+  </div>
+
+export default HomePage
+__EOF__
+```
+
+Crear la página de listado de películas
+
+```
+cat << __EOF__ > src/pages/MoviesPage.js
+import React from 'react'
+
+const MoviesPage = () =>
+  <div>
+    <h1>Movies</h1>
+  </div>
+
+export default MoviesPage
+__EOF__
+```
+
+Crear la página de 404
+
+```
+cat << __EOF__ > src/pages/NotFoundPage.js
+import React from 'react'
+
+const NotFoundPage = () =>
+  <div>
+    <h1>404 Not Found</h1>
+  </div>
+
+export default NotFoundPage
+__EOF__
+```
+
+Actualizar el componente principal para definir las rutas principales de la aplicación
+
+```
+cat << __EOF__ > src/components/App.js
+import React from 'react'
+import { Link, Switch, Route } from 'react-router-dom'
+import HomePage from '../pages/HomePage'
+import MoviesPage from '../pages/MoviesPage'
+import NotFoundPage from '../pages/NotFoundPage'
+
+const App = () =>
+  <div>
+    <ul>
+      <li><Link to="/">Home</Link></li>
+      <li><Link to="/movies">Movies</Link></li>
+      <li><Link to="/inexistente">Inexistente</Link></li>
+    </ul>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/movies" component={MoviesPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
+  </div>
+
+export default App
+__EOF__
+```
+
+Actualizar el punto de entrada para contener la aplicación dentro de `BrowserRouter`
+
+```
+cat << __EOF__ > src/client.js
+import React from 'react'
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import App from './components/App'
+
+render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+)
+__EOF__
+```
+
+Probar
+
+```
+npm start
+```
